@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>שירותים - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="services-page">
+            <div class="container">
+                <h1>שירותים</h1>
+                <p class="intro">אנחנו מתמחים במגוון רחב של עבודות ברזל מעוצבות</p>
+
+                <div class="services-grid">
+                    <div class="service-card">
+                        <h2>שערים מעוצבים</h2>
+                        <p>
+                            שערים מותאמים במלואם לכניסה הביתית או המסחרית שלך. מניירות עד רעדות מעוצבות,
+                            אנחנו יוצרים שערים שהם הן יפים והן בטוחים.
+                        </p>
+                        <a th:href="@{/inquiry}" class="btn btn-small">בקש הצעה</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>מעקות ודירוגים</h2>
+                        <p>
+                            מעקות ברזל מעוצבים למדרגות, מרפסות וגנים. עיצוב בטוח ויפה שמשלים את הסביבה שלך.
+                        </p>
+                        <a th:href="@{/inquiry}" class="btn btn-small">בקש הצעה</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>עיצוב חיצוני</h2>
+                        <p>
+                            קישוטי גן, פסלונים, שולחנות וחפצי עיצוב אחרים הנעשים מברזל חזק ויפה.
+                        </p>
+                        <a th:href="@{/inquiry}" class="btn btn-small">בקש הצעה</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>עיצוב מותאם</h2>
+                        <p>
+                            אם יש לך רעיון, אנחנו יכולים לבנות אותו. עבודות מותאמות במלואן לדרישות שלך.
+                        </p>
+                        <a th:href="@{/inquiry}" class="btn btn-small">בקש הצעה</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>תיקון והחלפה</h2>
+                        <p>
+                            שערים ועיצוב חיצוני קיים נדרש בתיקון? אנחנו יכולים לשדרג או לתקן אפילו פרויקטים קשי.
+                        </p>
+                        <a th:href="@{/inquiry}" class="btn btn-small">בקש הצעה</a>
+                    </div>
+
+                    <div class="service-card">
+                        <h2>ייעוץ עיצוב</h2>
+                        <p>
+                            צריך עצה על עיצוב הברזל שלך? אנחנו מסייעים לקבוע הרעיונות הטובים ביותר לנכסיך.
+                        </p>
+                        <a th:href="@{/contact}" class="btn btn-small">צור קשר</a>
+                    </div>
+                </div>
+
+                <div class="services-cta">
+                    <h2>מעוניין בפרויקט?</h2>
+                    <p>צור קשר אתנו היום לצעה חינמית לפרויקט שלך</p>
+                    <a th:href="@{/inquiry}" class="btn btn-primary btn-large">שלח בקשה</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

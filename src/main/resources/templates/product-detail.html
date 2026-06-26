@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title th:text="${product.name} + ' - Artisan Iron'"></title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="product-detail">
+            <div class="container">
+                <a th:href="@{/gallery}" class="back-link">← חזור לגלריה</a>
+
+                <div class="product-detail-content">
+                    <div class="product-detail-image">
+                        <img th:src="'data:image/jpeg;base64,' + ${product.imageBase64}"
+                             th:alt="${product.name}"
+                             class="main-image">
+                    </div>
+
+                    <div class="product-detail-info">
+                        <h1 th:text="${product.name}"></h1>
+                        <p class="category-badge" th:text="${product.categorySlug}"></p>
+
+                        <div class="price-section">
+                            <span class="price" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + '₪'"></span>
+                        </div>
+
+                        <div class="description-section">
+                            <h3>תיאור</h3>
+                            <p th:text="${product.description}"></p>
+                        </div>
+
+                        <div class="materials-section">
+                            <h3>חומרים וטכניקות</h3>
+                            <p th:text="${product.materials}"></p>
+                        </div>
+
+                        <div class="cta-section">
+                            <a th:href="@{/inquiry(product=${product.slug})}" class="btn btn-primary btn-large">הזמן עבודה מותאמת</a>
+                        </div>
+
+                        <div class="contact-info">
+                            <h3>יש לך שאלות?</h3>
+                            <p><a href="tel:+15550198">התקשר אלינו: +1 555-0198</a></p>
+                            <p><a href="mailto:forge@artisaniron.com">שלח דוא״ל: forge@artisaniron.com</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

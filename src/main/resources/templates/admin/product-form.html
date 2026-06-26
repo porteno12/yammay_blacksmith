@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>הוסף מוצר - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="admin-product-form" style="padding: 60px 0;">
+            <div class="container">
+                <h1 style="font-size: 2.5rem; color: #3E2723; margin-bottom: 2rem;">הוסף מוצר חדש</h1>
+
+                <form th:action="@{/admin/products}" method="post" enctype="multipart/form-data" class="form" style="max-width: 600px; margin: 0 auto;">
+                    <div class="form-group">
+                        <label for="slug">URL Slug</label>
+                        <input type="text" id="slug" name="slug" class="form-input" required placeholder="לדוגמה: gate-pompiya">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="name">שם</label>
+                        <input type="text" id="name" name="name" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">תיאור</label>
+                        <textarea id="description" name="description" class="form-textarea" rows="4" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="materials">חומרים</label>
+                        <input type="text" id="materials" name="materials" class="form-input" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="price">מחיר</label>
+                        <input type="number" id="price" name="price" class="form-input" step="0.01" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="categorySlug">קטגוריה</label>
+                        <select id="categorySlug" name="categorySlug" class="form-input" required>
+                            <option value="">בחר...</option>
+                            <option th:each="category : ${categories}" th:value="${category.slug}" th:text="${category.name}"></option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="image">תמונה</label>
+                        <input type="file" id="image" name="image" class="form-input" accept="image/*" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="featured">
+                            <input type="checkbox" id="featured" name="featured" value="true">
+                            הצג כמוצר מובחר
+                        </label>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="sortOrder">סדר מיון</label>
+                        <input type="number" id="sortOrder" name="sortOrder" class="form-input" value="0">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">שמור</button>
+                    <a th:href="@{/admin/products}" class="btn btn-secondary" style="margin-right: 1rem;">ביטול</a>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

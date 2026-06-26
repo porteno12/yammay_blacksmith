@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>עלינו - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="about-page">
+            <div class="container">
+                <h1>עלינו</h1>
+
+                <div class="about-content">
+                    <div class="about-text">
+                        <h2>אומן ברזל בעל ניסיון עשור</h2>
+                        <p>
+                            עם יותר מ-20 שנות ניסיון בעיצוב וייצור של שערים מעוצבים ועיצוב חיצוני, אנחנו משתקדים לתאר
+                            את גוונוניות ההדמיה לחיים. כל עבודה היא פרויקט ייחודי המעוצב ויצור בדייקות ותשומת לב לפרט.
+                        </p>
+                        <p>
+                            אנחנו משתמשים בטכניקות מסורתיות של קישור ברזל מעורבבות עם עיצוב מודרני לתוצאה שהיא גם
+                            יפה וגם מעשית. מכל סגנון קלאסי לעיצוב עכשווי, אנחנו יכולים לבנות את החזון שלך.
+                        </p>
+                    </div>
+
+                    <div class="about-process">
+                        <h2>תהליך העבודה שלנו</h2>
+                        <div class="process-steps">
+                            <div class="step">
+                                <h3>1. ייעוץ</h3>
+                                <p>נשמע את רעיונך ודרישותיך</p>
+                            </div>
+                            <div class="step">
+                                <h3>2. עיצוב</h3>
+                                <p>אנחנו יוצרים סקיצה המתאימה לחזון שלך</p>
+                            </div>
+                            <div class="step">
+                                <h3>3. יצור</h3>
+                                <p>אנחנו מעצבים בקשדון ובדייקות</p>
+                            </div>
+                            <div class="step">
+                                <h3>4. סיום</h3>
+                                <p>טיפול פני וייתקנות אחרונות</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="about-cta">
+                        <h2>בואו נעבוד ביחד</h2>
+                        <p>אנחנו עוזרים לבעלי בתים, מעצבים וקונים לייצור פרויקטים ייחודיים שיוסיפו ערך לנכסיהם.</p>
+                        <a th:href="@{/inquiry}" class="btn btn-primary btn-large">התחל פרויקט חדש</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

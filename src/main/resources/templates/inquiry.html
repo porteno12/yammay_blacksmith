@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>בקשה לעבודה מותאמת - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="inquiry-page">
+            <div class="container">
+                <h1>בקש עבודה מותאמת</h1>
+                <p class="intro">ספר לנו על הפרויקט שלך ואנחנו נחזור אליך עם הצעת מחיר</p>
+
+                <form th:action="@{/inquiry}" method="post" th:object="${inquiryForm}" class="form form-large">
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="customerName">שם</label>
+                            <input type="text" id="customerName" th:field="*{customerName}" class="form-input" required>
+                            <span th:if="${#fields.hasErrors('customerName')}" th:errors="*{customerName}" class="error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email">דוא״ל</label>
+                            <input type="email" id="email" th:field="*{email}" class="form-input" required>
+                            <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="phone">טלפון</label>
+                            <input type="tel" id="phone" th:field="*{phone}" class="form-input">
+                            <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}" class="error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="productType">סוג העבודה</label>
+                            <select id="productType" th:field="*{productType}" class="form-input" required>
+                                <option value="">בחר...</option>
+                                <option value="Gate">שער</option>
+                                <option value="Railing">מעקה/דירוג</option>
+                                <option value="Decor">עיצוב חיצוני</option>
+                                <option value="Custom">אחר</option>
+                            </select>
+                            <span th:if="${#fields.hasErrors('productType')}" th:errors="*{productType}" class="error"></span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dimensions">מידות / גודל</label>
+                        <input type="text" id="dimensions" th:field="*{dimensions}" class="form-input" placeholder="לדוגמה: 2.5M x 2M">
+                        <span th:if="${#fields.hasErrors('dimensions')}" th:errors="*{dimensions}" class="error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="materials">חומרים מעדיפים</label>
+                        <input type="text" id="materials" th:field="*{materials}" class="form-input" placeholder="לדוגמה: ברזל מחוזק, פיתוח דק">
+                        <span th:if="${#fields.hasErrors('materials')}" th:errors="*{materials}" class="error"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="description">תיאור הפרויקט</label>
+                        <textarea id="description" th:field="*{description}" class="form-textarea" rows="6" required></textarea>
+                        <span th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="error"></span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="budgetRange">טווח תקציב</label>
+                            <input type="text" id="budgetRange" th:field="*{budgetRange}" class="form-input" placeholder="לדוגמה: ₪5,000 - ₪10,000">
+                            <span th:if="${#fields.hasErrors('budgetRange')}" th:errors="*{budgetRange}" class="error"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="timeline">ציר זמן מקבילי</label>
+                            <input type="text" id="timeline" th:field="*{timeline}" class="form-input" placeholder="לדוגמה: 2-3 חודשים">
+                            <span th:if="${#fields.hasErrors('timeline')}" th:errors="*{timeline}" class="error"></span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">שלח בקשה</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

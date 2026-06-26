@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title layout:title-pattern="$CONTENT_TITLE - Artisan Iron">Artisan Iron</title>
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a th:href="@{/}" class="logo">
+                        <img src="/images/logo.png" alt="Artisan Iron" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a th:href="@{/}">דף הבית</a></li>
+                    <li><a th:href="@{/gallery}">גלריית עבודות</a></li>
+                    <li><a th:href="@{/services}">שירותים</a></li>
+                    <li><a th:href="@{/about}">עלינו</a></li>
+                    <li><a th:href="@{/contact}">צור קשר</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <layout:fragment name="content"></layout:fragment>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Artisan Iron</h3>
+                    <p>אומנות ברזל לשערים ועיצוב חיצוני</p>
+                </div>
+                <div class="footer-section">
+                    <h4>צור קשר</h4>
+                    <p>
+                        <strong>טלפון:</strong> <a href="tel:+15550198">+1 555-0198</a><br>
+                        <strong>דוא״ל:</strong> <a href="mailto:forge@artisaniron.com">forge@artisaniron.com</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>קישורים</h4>
+                    <ul>
+                        <li><a th:href="@{/}">דף הבית</a></li>
+                        <li><a th:href="@{/gallery}">גלריה</a></li>
+                        <li><a th:href="@{/contact}">צור קשר</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Artisan Iron. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script th:src="@{/js/main.js}"></script>
+</body>
+</html>

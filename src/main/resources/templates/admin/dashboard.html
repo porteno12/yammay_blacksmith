@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>לוח בקרה - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="admin-dashboard" style="padding: 60px 0;">
+            <div class="container">
+                <h1 style="font-size: 2.5rem; margin-bottom: 2rem; color: #3E2723;">לוח בקרה</h1>
+
+                <div class="admin-nav" style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+                    <a th:href="@{/admin/products}" class="btn btn-secondary">ניהול מוצרים</a>
+                    <a th:href="@{/admin/submissions}" class="btn btn-secondary">צור קשר והבקשות</a>
+                    <a th:href="@{/admin/logout}" class="btn btn-secondary">התנתקות</a>
+                </div>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div style="background: #FFFFFF; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h2 style="font-size: 1.5rem; color: #3E2723; margin-bottom: 1rem;">הודעות</h2>
+                        <p style="font-size: 2rem; color: #BF360C; font-weight: bold;" th:text="${unreadMessages} ?: 0"></p>
+                        <p style="color: #5D4037;">הודעות שלא נקראו</p>
+                        <a th:href="@{/admin/submissions}" class="btn btn-small" style="margin-top: 1rem;">צפה הכל</a>
+                    </div>
+
+                    <div style="background: #FFFFFF; padding: 2rem; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <h2 style="font-size: 1.5rem; color: #3E2723; margin-bottom: 1rem;">בקשות</h2>
+                        <p style="font-size: 2rem; color: #BF360C; font-weight: bold;" th:text="${unreadInquiries} ?: 0"></p>
+                        <p style="color: #5D4037;">בקשות שלא נקראו</p>
+                        <a th:href="@{/admin/submissions}" class="btn btn-small" style="margin-top: 1rem;">צפה הכל</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>הגשות - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="admin-submissions" style="padding: 60px 0;">
+            <div class="container">
+                <h1 style="font-size: 2.5rem; color: #3E2723; margin-bottom: 2rem;">הגשות צור קשר והבקשות</h1>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.8rem; color: #3E2723; margin-bottom: 1rem;">הודעות צור קשר</h2>
+                    <div style="background: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <div th:if="${#lists.isEmpty(messages)}" style="text-align: center; padding: 2rem; color: #5D4037;">
+                            <p>אין הודעות</p>
+                        </div>
+                        <div th:each="message : ${messages}" style="border-bottom: 1px solid #E0E0E0; padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start;">
+                                <div>
+                                    <h3 style="color: #3E2723; margin-bottom: 0.5rem;" th:text="${message.senderName}"></h3>
+                                    <p style="color: #5D4037; margin-bottom: 0.5rem;">
+                                        <strong>דוא״ל:</strong> <a th:href="@{'mailto:' + message.email}" th:text="${message.email}"></a>
+                                    </p>
+                                    <p style="color: #5D4037; margin-bottom: 0.5rem;" th:if="${message.phone}">
+                                        <strong>טלפון:</strong> <a th:href="@{'tel:' + message.phone}" th:text="${message.phone}"></a>
+                                    </p>
+                                    <p style="margin-top: 1rem; color: #333;">
+                                        <strong>הודעה:</strong><br>
+                                        <span th:text="${message.message}"></span>
+                                    </p>
+                                </div>
+                                <div style="text-align: left;">
+                                    <form method="post" th:action="@{/admin/submissions/messages/{id}/read(id=${message.id})}" style="display: inline;">
+                                        <button type="submit" class="btn btn-small" th:disabled="${message.read}">
+                                            <span th:if="!${message.read}">סימון כנקרא</span>
+                                            <span th:if="${message.read}">נקרא</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 3rem;">
+                    <h2 style="font-size: 1.8rem; color: #3E2723; margin-bottom: 1rem;">בקשות עבודה מותאמת</h2>
+                    <div style="background: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                        <div th:if="${#lists.isEmpty(inquiries)}" style="text-align: center; padding: 2rem; color: #5D4037;">
+                            <p>אין בקשות</p>
+                        </div>
+                        <div th:each="inquiry : ${inquiries}" style="border-bottom: 1px solid #E0E0E0; padding: 1.5rem;">
+                            <div style="display: flex; justify-content: space-between; align-items: start;">
+                                <div>
+                                    <h3 style="color: #3E2723; margin-bottom: 0.5rem;" th:text="${inquiry.customerName}"></h3>
+                                    <p style="color: #5D4037; margin-bottom: 0.5rem;">
+                                        <strong>דוא״ל:</strong> <a th:href="@{'mailto:' + inquiry.email}" th:text="${inquiry.email}"></a>
+                                    </p>
+                                    <p style="color: #5D4037; margin-bottom: 0.5rem;" th:if="${inquiry.phone}">
+                                        <strong>טלפון:</strong> <a th:href="@{'tel:' + inquiry.phone}" th:text="${inquiry.phone}"></a>
+                                    </p>
+                                    <p style="color: #5D4037; margin-bottom: 0.5rem;">
+                                        <strong>סוג העבודה:</strong> <span th:text="${inquiry.productType}"></span>
+                                    </p>
+                                    <p style="color: #5D4037; margin-bottom: 0.5rem;" th:if="${inquiry.budgetRange}">
+                                        <strong>תקציב:</strong> <span th:text="${inquiry.budgetRange}"></span>
+                                    </p>
+                                    <p style="margin-top: 1rem; color: #333;">
+                                        <strong>תיאור:</strong><br>
+                                        <span th:text="${inquiry.description}"></span>
+                                    </p>
+                                    <p style="color: #BF360C; margin-top: 1rem;">
+                                        <strong>סטטוס:</strong> <span th:text="${inquiry.status}"></span>
+                                    </p>
+                                </div>
+                                <div style="text-align: left;">
+                                    <form method="post" th:action="@{/admin/submissions/inquiries/{id}/read(id=${inquiry.id})}" style="display: inline;">
+                                        <button type="submit" class="btn btn-small" th:disabled="${inquiry.read}">
+                                            <span th:if="!${inquiry.read}">סימון כנקרא</span>
+                                            <span th:if="${inquiry.read}">נקרא</span>
+                                        </button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <a th:href="@{/admin}" class="btn btn-secondary">חזור ללוח הבקרה</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

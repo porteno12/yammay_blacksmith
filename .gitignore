@@ -1,0 +1,16 @@
+target/
+.idea/
+*.iml
+*.class
+.DS_Store
+.env
+*.log
+.gradle/
+build/
+*.jar
+firebase-*.json
+.mvn/
+mvnw.cmd
+*.swp
+*.swo
+*~

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>ניהול מוצרים - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="admin-products" style="padding: 60px 0;">
+            <div class="container">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem;">
+                    <h1 style="font-size: 2.5rem; color: #3E2723;">ניהול מוצרים</h1>
+                    <a th:href="@{/admin/products/new}" class="btn btn-primary">+ הוסף מוצר חדש</a>
+                </div>
+
+                <div style="background: #FFFFFF; border-radius: 8px; overflow: hidden; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <thead style="background: #3E2723; color: #FFFFFF;">
+                            <tr>
+                                <th style="padding: 1rem; text-align: right;">שם</th>
+                                <th style="padding: 1rem; text-align: right;">קטגוריה</th>
+                                <th style="padding: 1rem; text-align: right;">מחיר</th>
+                                <th style="padding: 1rem; text-align: right;">פעולות</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="product : ${products}" style="border-bottom: 1px solid #E0E0E0;">
+                                <td style="padding: 1rem;" th:text="${product.name}"></td>
+                                <td style="padding: 1rem;" th:text="${product.categorySlug}"></td>
+                                <td style="padding: 1rem;" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + '₪'"></td>
+                                <td style="padding: 1rem;">
+                                    <form method="post" th:action="@{/admin/products/{id}/delete(id=${product.id})}" style="display: inline;">
+                                        <button type="submit" class="btn btn-small" onclick="return confirm('האם בטוח?')" style="background: #C62828; color: #FFFFFF;">מחק</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div th:if="${#lists.isEmpty(products)}" style="text-align: center; padding: 2rem; color: #5D4037;">
+                    <p>אין מוצרים עדיין</p>
+                </div>
+
+                <div style="margin-top: 2rem;">
+                    <a th:href="@{/admin}" class="btn btn-secondary">חזור ללוח הבקרה</a>
+                </div>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>עמוד לא נמצא - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="error-page" style="padding: 100px 20px; text-align: center;">
+            <div class="container">
+                <h1 style="font-size: 3rem; color: #3E2723; margin-bottom: 1rem;">404</h1>
+                <h2 style="color: #5D4037; margin-bottom: 1rem;">העמוד לא נמצא</h2>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem;" th:text="${message} ?: 'המשאב שביקשת לא קיים'"></p>
+                <a href="/" class="btn btn-primary">חזור לדף הבית</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

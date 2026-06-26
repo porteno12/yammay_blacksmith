@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>דף הבית - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>אומנות ברזל מסורתית</h1>
+                <p>שערים מעוצבים ועיצוב חיצוני ייחודי</p>
+                <div class="hero-buttons">
+                    <a th:href="@{/gallery}" class="btn btn-primary">צפה בגלריה</a>
+                    <a th:href="@{/inquiry}" class="btn btn-secondary">בקש עבודה מותאמת</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <div class="container">
+                <h2>עבודות מובחרות</h2>
+                <div class="products-grid">
+                    <div th:each="product : ${featuredProducts}" class="product-card">
+                        <div class="product-image">
+                            <img th:src="'data:image/jpeg;base64,' + ${product.imageBase64}" th:alt="${product.name}" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 th:text="${product.name}"></h3>
+                            <p class="product-category" th:text="${product.categorySlug}"></p>
+                            <p class="product-price" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + '₪'"></p>
+                            <a th:href="@{/gallery/{slug}(slug=${product.slug})}" class="btn btn-small">צפה בפרטים</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>יש לך רעיון? בואו נעשה את זה</h2>
+                <p>עם יותר מ-20 שנים של ניסיון, אנחנו יכולים להביא לחיים כל עיצוב</p>
+                <a th:href="@{/inquiry}" class="btn btn-primary btn-large">התחל פרויקט חדש</a>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

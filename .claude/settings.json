@@ -1,0 +1,18 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(java -jar /Users/wizo/Yammay_Blacksmith/artisan-iron-web/target/artisan-iron-web-1.0.0.jar)",
+      "Bash(curl -s -I http://localhost:8080)",
+      "Bash(java -jar target/artisan-iron-web-1.0.0.jar)",
+      "Bash(curl -I http://localhost:8080)",
+      "Bash(sleep 15 && tail -100 /tmp/app.log)",
+      "Read(//private/tmp/**)",
+      "Bash(java -jar target/artisan-iron-web-1.0.0.jar --firebase.enabled=false)",
+      "Bash(tail -100 /tmp/app.log && echo \"---\" && ps aux | grep \"java.*artisan\\\\|java.*firebase\" | grep -v grep)",
+      "Bash(pkill -f \"java.*artisan\")",
+      "Bash(mvn spring-boot:run -Dspring-boot.run.arguments=\"--debug\")",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)"
+    ]
+  }
+}

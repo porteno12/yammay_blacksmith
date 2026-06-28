@@ -1,0 +1,30 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot App",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.artisaniron.ArtisanIronApplication",
+            "projectName": "artisan-iron-web",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env",
+            "serverReadyAction": {
+                "pattern": "Started ArtisanIronApplication",
+                "uriFormat": "http://localhost:8080",
+                "action": "openExternally"
+            }
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot App (No Build)",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.artisaniron.ArtisanIronApplication",
+            "projectName": "artisan-iron-web",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

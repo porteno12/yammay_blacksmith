@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>דף הבית - Artisan Iron</title>
+    <link rel="stylesheet" href="/css/main.css">
+</head>
+<body>
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-brand">
+                    <a href="/" class="logo">
+                        <img src="/images/logo.png" alt="Artisan Iron" class="logo-img">
+                    </a>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="/">דף הבית</a></li>
+                    <li><a href="/gallery">גלריית עבודות</a></li>
+                    <li><a href="/services">שירותים</a></li>
+                    <li><a href="/about">עלינו</a></li>
+                    <li><a href="/contact">צור קשר</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>אומנות ברזל מסורתית</h1>
+                <p>שערים מעוצבים ועיצוב חיצוני ייחודי</p>
+                <div class="hero-buttons">
+                    <a href="/gallery" class="btn btn-primary">צפה בגלריה</a>
+                    <a href="/inquiry" class="btn btn-secondary">בקש עבודה מותאמת</a>
+                </div>
+            </div>
+        </section>
+
+        <section class="featured-products">
+            <div class="container">
+                <h2>עבודות מובחרות</h2>
+                <div class="products-grid">
+                    <div th:each="product : ${featuredProducts}" class="product-card">
+                        <div class="product-image">
+                            <img th:src="'data:image/png;base64,' + ${product.imageBase64}" th:alt="${product.name}" loading="lazy">
+                        </div>
+                        <div class="product-info">
+                            <h3 th:text="${product.name}"></h3>
+                            <p class="product-category" th:text="${product.categorySlug}"></p>
+                            <p class="product-price" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + '₪'"></p>
+                            <a th:href="@{/gallery/{slug}(slug=${product.slug})}" class="btn btn-small">צפה בפרטים</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>יש לך רעיון? בואו נעשה את זה</h2>
+                <p>עם יותר מ-20 שנים של ניסיון, אנחנו יכולים להביא לחיים כל עיצוב</p>
+                <a href="/inquiry" class="btn btn-primary btn-large">התחל פרויקט חדש</a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Artisan Iron</h3>
+                    <p>אומנות ברזל לשערים ועיצוב חיצוני</p>
+                </div>
+                <div class="footer-section">
+                    <h4>צור קשר</h4>
+                    <p>
+                        <strong>טלפון:</strong> <a href="tel:+15550198">+1 555-0198</a><br>
+                        <strong>דוא״ל:</strong> <a href="mailto:forge@artisaniron.com">forge@artisaniron.com</a>
+                    </p>
+                </div>
+                <div class="footer-section">
+                    <h4>קישורים</h4>
+                    <ul>
+                        <li><a href="/">דף הבית</a></li>
+                        <li><a href="/gallery">גלריה</a></li>
+                        <li><a href="/contact">צור קשר</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Artisan Iron. כל הזכויות שמורות.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="/js/main.js"></script>
+</body>
+</html>

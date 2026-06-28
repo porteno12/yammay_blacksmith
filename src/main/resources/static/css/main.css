@@ -55,7 +55,7 @@ body {
 }
 
 .navbar-brand .logo-img {
-    height: 50px;
+    height: 80px;
     width: auto;
 }
 
@@ -430,6 +430,21 @@ body {
 }
 
 /* Services Section */
+.services-page {
+    background-color: var(--color-white);
+}
+
+.services-page .container {
+    padding: 60px 20px;
+}
+
+.services-page .intro {
+    text-align: center;
+    font-size: 1.1rem;
+    color: var(--color-secondary);
+    margin-bottom: 2rem;
+}
+
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

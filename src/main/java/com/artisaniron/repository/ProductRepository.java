@@ -109,11 +109,11 @@ public class ProductRepository {
             key = firebaseDatabase.getReference(COLLECTION).push().getKey();
         }
         product.setId(key);
-        firebaseDatabase.getReference(COLLECTION).child(key).setValue(product);
+        firebaseDatabase.getReference(COLLECTION).child(key).setValue(product, (error, ref) -> {});
         return product;
     }
 
     public void delete(String id) {
-        firebaseDatabase.getReference(COLLECTION).child(id).removeValue();
+        firebaseDatabase.getReference(COLLECTION).child(id).removeValue((error, ref) -> {});
     }
 }

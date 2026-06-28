@@ -1,3 +1,7 @@
+firebase:
+  database-url: ${FIREBASE_DATABASE_URL}
+  service-account-json: ${FIREBASE_SERVICE_ACCOUNT_JSON}
+
 spring:
   application:
     name: artisan-iron-web

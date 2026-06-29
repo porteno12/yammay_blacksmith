@@ -11,12 +11,20 @@ public class EmailService {
     private static final Logger logger = LoggerFactory.getLogger(EmailService.class);
     private final JavaMailSender mailSender;
     private static final String FROM_EMAIL = "forge@artisaniron.com";
+    private static final boolean EMAIL_ENABLED = false;
 
     public EmailService(JavaMailSender mailSender) {
         this.mailSender = mailSender;
+        if (!EMAIL_ENABLED) {
+            logger.info("Email sending is disabled");
+        }
     }
 
     public void sendContactConfirmation(String toEmail, String senderName) {
+        if (!EMAIL_ENABLED) {
+            logger.debug("Email disabled: skipping contact confirmation to {}", toEmail);
+            return;
+        }
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(FROM_EMAIL);
@@ -32,6 +40,10 @@ public class EmailService {
     }
 
     public void sendContactNotificationToAdmin(String senderName, String senderEmail, String senderPhone, String message) {
+        if (!EMAIL_ENABLED) {
+            logger.debug("Email disabled: skipping admin notification from {}", senderEmail);
+            return;
+        }
         try {
             SimpleMailMessage adminMessage = new SimpleMailMessage();
             adminMessage.setFrom(FROM_EMAIL);
@@ -52,6 +64,10 @@ public class EmailService {
     }
 
     public void sendInquiryConfirmation(String toEmail, String customerName) {
+        if (!EMAIL_ENABLED) {
+            logger.debug("Email disabled: skipping inquiry confirmation to {}", toEmail);
+            return;
+        }
         try {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(FROM_EMAIL);
@@ -67,6 +83,10 @@ public class EmailService {
     }
 
     public void sendInquiryNotificationToAdmin(String customerName, String customerEmail, String productType, String description) {
+        if (!EMAIL_ENABLED) {
+            logger.debug("Email disabled: skipping inquiry notification from {}", customerEmail);
+            return;
+        }
         try {
             SimpleMailMessage adminMessage = new SimpleMailMessage();
             adminMessage.setFrom(FROM_EMAIL);

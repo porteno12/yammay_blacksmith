@@ -6,7 +6,7 @@ spring:
   application:
     name: artisan-iron-web
   thymeleaf:
-    cache: false
+    cache: true
     mode: HTML
   mail:
     host: smtp.sendgrid.net
@@ -23,7 +23,7 @@ spring:
       spec: maximumSize=100,expireAfterWrite=10m
 
 server:
-  port: 8080
+  port: ${PORT:8080}
   servlet:
     context-path: /
 

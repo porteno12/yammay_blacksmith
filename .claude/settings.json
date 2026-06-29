@@ -12,7 +12,14 @@
       "Bash(pkill -f \"java.*artisan\")",
       "Bash(mvn spring-boot:run -Dspring-boot.run.arguments=\"--debug\")",
       "Bash(git add *)",
-      "Bash(git commit -m ' *)"
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(grep -rn \"System.getenv\\\\|System.getProperty\\\\|\\\\${.*}\\\\|process.env\\\\|getenv\\\\|os.environ\" /Users/wizo/Yammay_Blacksmith/artisan-iron-web/src --include=\"*.java\" --include=\"*.properties\" --include=\"*.yml\" -l)",
+      "Bash(grep -rn \"System.getenv\\\\|getenv\\\\|\\\\${.*}\\\\|os.environ\\\\|process.env\" /Users/wizo/Yammay_Blacksmith/artisan-iron-web/src --include=\"*.java\")",
+      "Bash(grep -v \"//.*\\\\${\")",
+      "Bash(./mvnw package *)",
+      "Bash(mvn package *)",
+      "Bash(git rm *)"
     ]
   }
 }

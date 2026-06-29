@@ -39,7 +39,9 @@ public class InquiryController {
         }
 
         inquiryService.submitInquiry(form);
+        model.addAttribute("successTitle", "✓ בקשתך התקבלה בהצלחה!");
         model.addAttribute("successMessage", "תודה על בקשתך. אנחנו נחזור אליך בקרוב עם הצעת מחיר!");
-        return "inquiry-success";
+        model.addAttribute("successSubtitle", "אנחנו נבדוק את פרטי הפרויקט שלך ונחזור אליך עם הצעת מחיר.");
+        return "success";
     }
 }

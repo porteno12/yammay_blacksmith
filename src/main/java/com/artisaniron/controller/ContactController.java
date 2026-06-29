@@ -34,7 +34,9 @@ public class ContactController {
         }
 
         contactService.submitContact(form);
+        model.addAttribute("successTitle", "✓ הודעתך נשלחה בהצלחה!");
         model.addAttribute("successMessage", "תודה על פנייתך. אנחנו נחזור אליך בקרוב!");
-        return "contact-success";
+        model.addAttribute("successSubtitle", "אנחנו נחזור אליך בקרוב.");
+        return "success";
     }
 }

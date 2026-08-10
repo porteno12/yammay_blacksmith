@@ -65,7 +65,7 @@ public class DemoHomeController {
     }
 
     private String createPlaceholderImage() {
-        // Simple gray placeholder image in base64 (100x100 PNG)
-        return "iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAYAAABw7pVKAAAABmJLR0QA/wD/AP+gvaeTAAAACXBIWXMAAAsTAAALEwEAmpwYAAAAC0lEQVRoge3BMQEAAADCoPVPbQhfoAAAAAAAAAAAAAAAAAAAADg9IAABT4KfkgAAAA==";
+        // Light gray 100x100 PNG placeholder
+        return "iVBORw0KGgoAAAANSUhEUgAAAGQAAABkCAIAAAD/gAIDAAAAnklEQVR42u3QMQEAAAwCIPunNIoV9u2BCKScRYEsWbJkyZKlQJYsWbJkyVIgS5YsWbJkKZAlS5YsWbIUyJIlS5YsWQpkyZIlS5YsBbJkyZIlS5YCWbJkyZIlS4EsWbJkyZKlQJYsWbJkyVIgS5YsWbJkKZAlS5YsWbIUyJIlS5YsWQpkyZIlS5YsBbJkyZIlS5YCWbJkyZIlS4EsWd8GpOaP+8yP+5YAAAAASUVORK5CYII=";
     }
 }

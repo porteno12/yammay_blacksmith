@@ -1,0 +1,21 @@
+# Demo profile: browse the UI with sample products, no real Firebase data needed.
+# Activate with:  mvn spring-boot:run -Dspring-boot.run.profiles=demo
+#
+# firebase.enabled=false switches DemoHomeController on (it is annotated
+# @ConditionalOnProperty(name = "firebase.enabled", havingValue = "false")).
+firebase:
+  enabled: false
+  database-url: ""
+  service-account-json: ""
+
+spring:
+  thymeleaf:
+    cache: false
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration
+      - org.springframework.boot.autoconfigure.security.servlet.UserDetailsServiceAutoConfiguration
+      - org.springframework.boot.autoconfigure.mail.MailSenderAutoConfiguration
+
+server:
+  port: ${PORT:8080}

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/base}">
+<head>
+    <title>כניסת מנהל - Artisan Iron</title>
+</head>
+<body>
+    <div layout:fragment="content">
+        <section class="admin-login" style="padding: 60px 0;">
+            <div class="container">
+                <h1 style="font-size: 2.5rem; color: #3E2723; margin-bottom: 2rem; text-align: center;">כניסת מנהל</h1>
+
+                <form th:action="@{/admin/login}" method="post" class="form form-large">
+                    <p th:if="${error}" class="error">שם משתמש או סיסמה שגויים</p>
+                    <p th:if="${logoutSuccess}" class="success">התנתקת בהצלחה</p>
+
+                    <div class="form-group">
+                        <label for="username">שם משתמש</label>
+                        <input type="text" id="username" name="username" class="form-input" required autofocus>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">סיסמה</label>
+                        <input type="password" id="password" name="password" class="form-input" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-large">כניסה</button>
+                </form>
+            </div>
+        </section>
+    </div>
+</body>
+</html>

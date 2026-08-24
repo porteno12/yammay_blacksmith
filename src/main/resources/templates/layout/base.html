@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title layout:title-pattern="$CONTENT_TITLE - Artisan Iron">Artisan Iron</title>
+    <title layout:title-pattern="$CONTENT_TITLE">Yammay Blacksmith</title>
     <link rel="stylesheet" th:href="@{/css/main.css}">
 </head>
 <body>
@@ -12,7 +12,7 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a th:href="@{/}" class="logo">
-                        <img src="/images/logo.png" alt="Artisan Iron" class="logo-img">
+                        <img src="/images/logo.png" alt="Yammay Blacksmith" class="logo-img">
                     </a>
                 </div>
                 <ul class="nav-menu">
@@ -26,15 +26,13 @@
         </nav>
     </header>
 
-    <main>
-        <layout:fragment name="content"></layout:fragment>
-    </main>
+    <main layout:fragment="content"></main>
 
     <footer class="footer">
         <div class="container">
             <div class="footer-content">
                 <div class="footer-section">
-                    <h3>Artisan Iron</h3>
+                    <h3>Yammay Blacksmith</h3>
                     <p>אומנות ברזל לשערים ועיצוב חיצוני</p>
                 </div>
                 <div class="footer-section">
@@ -54,7 +52,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2024 Artisan Iron. כל הזכויות שמורות.</p>
+                <p>&copy; 2024 Yammay Blacksmith. כל הזכויות שמורות.</p>
             </div>
         </div>
     </footer>

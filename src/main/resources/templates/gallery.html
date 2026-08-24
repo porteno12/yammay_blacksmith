@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="he" dir="rtl" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       layout:decorate="~{layout/base}">
 <head>
-    <title>גלריית עבודות - Artisan Iron</title>
+    <title>גלריית עבודות - Yammay Blacksmith</title>
 </head>
 <body>
     <div layout:fragment="content">
         <section class="gallery-page">
             <div class="container">
                 <h1>גלריית עבודות</h1>
+
+                <div th:if="${successMessage}" style="background: #E8F5E9; color: #2E7D32; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;" th:text="${successMessage}"></div>
+                <div th:if="${errorMessage}" style="background: #FFEBEE; color: #C62828; padding: 1rem; border-radius: 4px; margin-bottom: 1.5rem;" th:text="${errorMessage}"></div>
 
                 <div class="category-filters">
                     <a th:href="@{/gallery}" class="filter-btn" th:classappend="${selectedCategory == null ? 'active' : ''}">הכל</a>
@@ -20,7 +24,8 @@
                 </div>
 
                 <div class="products-grid">
-                    <div th:each="product : ${products}" class="product-card">
+                    <div th:each="product : ${products}" class="product-card"
+                         th:with="galleryRedirect=${selectedCategory != null ? '/gallery?category=' + selectedCategory : '/gallery'}">
                         <div class="product-image">
                             <img th:src="'data:image/jpeg;base64,' + ${product.imageBase64}"
                                  th:alt="${product.name}"
@@ -31,6 +36,25 @@
                             <p class="product-materials" th:text="${product.materials}"></p>
                             <p class="product-price" th:text="${#numbers.formatDecimal(product.price, 0, 'COMMA', 2, 'POINT')} + '₪'"></p>
                             <a th:href="@{/gallery/{slug}(slug=${product.slug})}" class="btn btn-small">צפה בפרטים</a>
+
+                            <div sec:authorize="hasRole('ADMIN')" style="margin-top: 0.75rem; padding-top: 0.75rem; border-top: 1px dashed #E0E0E0;">
+                                <div th:unless="${#lists.isEmpty(product.galleryImages)}" style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 0.5rem;">
+                                    <div th:each="img, iter : ${product.galleryImages}" style="position: relative;">
+                                        <img th:src="'data:image/jpeg;base64,' + ${img}" alt="תמונה נוספת"
+                                             style="width: 48px; height: 48px; object-fit: cover; border-radius: 4px; border: 1px solid #E0E0E0;">
+                                        <form method="post" th:action="@{/admin/products/{id}/images/{index}/delete(id=${product.id},index=${iter.index})}" style="display: inline;">
+                                            <input type="hidden" name="redirectTo" th:value="${galleryRedirect}">
+                                            <button type="submit" onclick="return confirm('מחק תמונה?')"
+                                                    style="position: absolute; top: -6px; left: -6px; background: #C62828; color: #FFFFFF; border: none; border-radius: 50%; width: 18px; height: 18px; font-size: 10px; line-height: 1; cursor: pointer;">×</button>
+                                        </form>
+                                    </div>
+                                </div>
+                                <form method="post" th:action="@{/admin/products/{id}/images(id=${product.id})}" enctype="multipart/form-data">
+                                    <input type="hidden" name="redirectTo" th:value="${galleryRedirect}">
+                                    <input type="file" name="images" accept="image/*" multiple style="font-size: 0.75rem; max-width: 100%;">
+                                    <button type="submit" class="btn btn-small" style="margin-top: 0.5rem;">העלה תמונות</button>
+                                </form>
+                            </div>
                         </div>
                     </div>
                 </div>

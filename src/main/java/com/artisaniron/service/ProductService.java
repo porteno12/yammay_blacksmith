@@ -53,6 +53,16 @@ public class ProductService {
         }
     }
 
+    public Optional<Product> getProductById(String id) {
+        try {
+            return productRepository.findById(id);
+        } catch (InterruptedException e) {
+            logger.error("Interrupted while fetching product by id: {}", id, e);
+            Thread.currentThread().interrupt();
+            return Optional.empty();
+        }
+    }
+
     public Optional<Product> getProductBySlug(String slug) {
         try {
             return productRepository.findBySlug(slug);

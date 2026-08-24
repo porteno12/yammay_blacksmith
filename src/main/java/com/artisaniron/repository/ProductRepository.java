@@ -47,6 +47,29 @@ public class ProductRepository {
         return products;
     }
 
+    public Optional<Product> findById(String id) throws InterruptedException {
+        CountDownLatch latch = new CountDownLatch(1);
+        Product[] result = {null};
+
+        firebaseDatabase.getReference(COLLECTION)
+                .child(id)
+                .addListenerForSingleValueEvent(new com.google.firebase.database.ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        result[0] = snapshot.getValue(Product.class);
+                        latch.countDown();
+                    }
+
+                    @Override
+                    public void onCancelled(com.google.firebase.database.DatabaseError error) {
+                        latch.countDown();
+                    }
+                });
+
+        latch.await();
+        return Optional.ofNullable(result[0]);
+    }
+
     public Optional<Product> findBySlug(String slug) throws InterruptedException {
         CountDownLatch latch = new CountDownLatch(1);
         Product[] result = {null};
@@ -109,11 +132,11 @@ public class ProductRepository {
             key = firebaseDatabase.getReference(COLLECTION).push().getKey();
         }
         product.setId(key);
-        firebaseDatabase.getReference(COLLECTION).child(key).setValue(product);
+        firebaseDatabase.getReference(COLLECTION).child(key).setValueAsync(product);
         return product;
     }
 
     public void delete(String id) {
-        firebaseDatabase.getReference(COLLECTION).child(id).removeValue();
+        firebaseDatabase.getReference(COLLECTION).child(id).removeValueAsync();
     }
 }

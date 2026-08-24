@@ -52,11 +52,11 @@ public class ContactMessageRepository {
             key = firebaseDatabase.getReference(COLLECTION).push().getKey();
         }
         message.setId(key);
-        firebaseDatabase.getReference(COLLECTION).child(key).setValue(message);
+        firebaseDatabase.getReference(COLLECTION).child(key).setValueAsync(message);
         return message;
     }
 
     public void markAsRead(String id) {
-        firebaseDatabase.getReference(COLLECTION).child(id).child("read").setValue(true);
+        firebaseDatabase.getReference(COLLECTION).child(id).child("read").setValueAsync(true);
     }
 }

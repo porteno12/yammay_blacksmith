@@ -52,15 +52,15 @@ public class InquiryRequestRepository {
             key = firebaseDatabase.getReference(COLLECTION).push().getKey();
         }
         inquiry.setId(key);
-        firebaseDatabase.getReference(COLLECTION).child(key).setValue(inquiry);
+        firebaseDatabase.getReference(COLLECTION).child(key).setValueAsync(inquiry);
         return inquiry;
     }
 
     public void markAsRead(String id) {
-        firebaseDatabase.getReference(COLLECTION).child(id).child("read").setValue(true);
+        firebaseDatabase.getReference(COLLECTION).child(id).child("read").setValueAsync(true);
     }
 
     public void updateStatus(String id, String status) {
-        firebaseDatabase.getReference(COLLECTION).child(id).child("status").setValue(status);
+        firebaseDatabase.getReference(COLLECTION).child(id).child("status").setValueAsync(status);
     }
 }

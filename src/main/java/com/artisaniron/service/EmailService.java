@@ -21,8 +21,8 @@ public class EmailService {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(FROM_EMAIL);
             message.setTo(toEmail);
-            message.setSubject("הודעתך התקבלה - Artisan Iron");
-            message.setText("שלום " + senderName + ",\n\nתודה על פנייתך. אנחנו נחזור אליך בקרוב.\n\nArtisan Iron");
+            message.setSubject("הודעתך התקבלה - Yammay Blacksmith");
+            message.setText("שלום " + senderName + ",\n\nתודה על פנייתך. אנחנו נחזור אליך בקרוב.\n\nYammay Blacksmith");
 
             mailSender.send(message);
             logger.info("Contact confirmation email sent to: {}", toEmail);
@@ -56,8 +56,8 @@ public class EmailService {
             SimpleMailMessage message = new SimpleMailMessage();
             message.setFrom(FROM_EMAIL);
             message.setTo(toEmail);
-            message.setSubject("בקשתך לעבודה מותאמת התקבלה - Artisan Iron");
-            message.setText("שלום " + customerName + ",\n\nתודה על בקשתך. אנחנו נבחן את פרטי הפרויקט שלך ונחזור אליך בקרוב עם הצעת מחיר.\n\nArtisan Iron");
+            message.setSubject("בקשתך לעבודה מותאמת התקבלה - Yammay Blacksmith");
+            message.setText("שלום " + customerName + ",\n\nתודה על בקשתך. אנחנו נבחן את פרטי הפרויקט שלך ונחזור אליך בקרוב עם הצעת מחיר.\n\nYammay Blacksmith");
 
             mailSender.send(message);
             logger.info("Inquiry confirmation email sent to: {}", toEmail);
